@@ -1,15 +1,35 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the PaginasEstaticasHelper. For example:
-#
-# describe PaginasEstaticasHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
-describe PaginasEstaticasHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe "Paginas Estaticas Pruebas" do
+	describe "Inicio Page" do
+		it "La pagina de Inicio debera contener un titulo Correcto" do
+			visit '/paginas_estaticas/inicio'
+			page.should have_selector('title',:text=>"| Inicio")
+		end
+		it "La pagina de Inicio debera contener en su h1 Inicio" do
+			visit '/paginas_estaticas/inicio'
+			page.should have_selector('h1',:text=>"Inicio")
+		end
+	end
+	describe "Ayuda Page" do
+		it "La pagina de Ayuda debera contener un titulo Correcto" do
+			visit '/paginas_estaticas/ayuda'
+			page.should have_selector('title',:text=>"| Ayuda")
+		end
+		it "La pagina de Ayuda debera contener en su h1 Ayuda" do
+			visit '/paginas_estaticas/ayuda'
+			page.should have_selector('h1',:text=>"Ayuda")
+		end
+	end
+	describe "Acerca_de Page" do
+		it "La pagina de Acerca de debera contener un titulo Correcto" do
+			visit '/paginas_estaticas/acerca_de'
+			page.should have_selector('title',:text=>"| Acerca de")
+		end
+		it "La pagina Acerca de debera contener en su h1 Acerca de" do
+			visit '/paginas_estaticas/acerca_de'
+			page.should have_selector('h1',:text=>"Acerca de")
+		end
+	end
+
 end
