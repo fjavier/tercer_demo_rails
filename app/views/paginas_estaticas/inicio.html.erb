@@ -1,5 +1,13 @@
+<!--Pagina de Inicio de la Aplicacion -->
 <!-- <% provide(:title,'Inicio') %> -->
-<h1><%= yield(:title) %></h1>
-<p>Esta pagina Tiene como Objeto una Demostracion, con una aplicacion hecha en Ruby, El sistema de Plantillas</p>
-<p>De igual manera  se realizaron Pruebas con Rspec</p>
-
+<div class="center hero-unit">
+	<h1>Bienvenido al Tercer Demo: SAMPLE APP</h1>
+	<h2>Esta es la pagina de Ejemplo para: la demostracion del
+		<a href="http://railstutorial.org/">Tutorial de Ruby on Rails</a> 
+	</h2>
+	<!-- Ayudante Primer Parametro: Titulo, Segundo Parametro URI, Tercer parametro
+	tiene un significado especial para bootstrap-->
+	<%= link_to "Ingresa Ahora", '#', class: "btn-large btn-primary"%>
+</div>
+	<!-- Ayudante: Presenta una imagen llamada rails.png y como texto alternativo Rails-->
+<%= link_to image_tag("rails.png", alt:"Rails"),'http://rubyonrails.org/'%>
