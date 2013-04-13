@@ -1,11 +1,21 @@
 SampleApp::Application.routes.draw do
-  get "paginas_estaticas/inicio"
+  #Esta regla sera necesaria actualmente.
+  #get "usuario/nuevo"
 
-  get "paginas_estaticas/ayuda"
+#Esta regla es para Redireccionar a la raiz, la aplicacion.
+  root to: 'paginas_estaticas#inicio'
+  # Modificamos las Reglas
+  # get "paginas_estaticas/inicio" por match /help to "paginas_estaticas#inicio"
 
-  get "paginas_estaticas/acerca_de"
+  match '/nuevo', to: 'usuario#nuevo'
 
-  get "paginas_estaticas/contacto"
+  match '/', to: 'paginas_estaticas#inicio'
+
+  match '/ayuda', to: 'paginas_estaticas#ayuda'
+
+  match '/acerca_de', to: 'paginas_estaticas#acerca_de'
+
+  match '/contacto', to: 'paginas_estaticas#contacto'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

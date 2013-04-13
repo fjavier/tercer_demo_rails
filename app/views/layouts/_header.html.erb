@@ -1,0 +1,17 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+	<div class="navbar-inner">
+		<div class="container">
+			<!-- Logotipo-->
+			<!-- Link_to es un ayudante que crea enlaces, por el momento estan sin URI-->
+			<!-- El tercer argumento es opcional.-->
+			<%= link_to "sample_app" , '#', id:"logo"%>
+			<nav class="nav pull-right">
+			    <ul>
+			        <li><%= link_to "inicio", root_path %></li><!--
+			     --><li><%= link_to "ayuda", ayuda_path %></li><!--
+			     --><li><%= link_to "Ingreso", nuevo_path%></li>
+			    </ul>
+			</nav>
+		</div>
+	</div>
+</header>
