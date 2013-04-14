@@ -1,13 +1,13 @@
 <!--Pagina de Inicio de la Aplicacion -->
 <!-- <% provide(:title,'Inicio') %> -->
 <div class="center hero-unit">
-	<h1>Bienvenido al Tercer Demo: SAMPLE APP</h1>
-	<h2>Esta es la pagina de Ejemplo para: la demostracion del
+	<h1>Bienvenido al Demo: SAMPLE APP</h1>
+	<h2>Desarrollo de una aplicacion Ruby de
 		<a href="http://railstutorial.org/">Tutorial de Ruby on Rails</a> 
 	</h2>
 	<!-- Ayudante Primer Parametro: Titulo, Segundo Parametro URI, Tercer parametro
 	tiene un significado especial para bootstrap-->
-	<%= link_to "Ingresa Ahora", '#', class: "btn-large btn-primary"%>
+	<%= link_to "Ingresa Ahora", signin_path, class: "btn-large btn-primary"%>
 </div>
 	<!-- Ayudante: Presenta una imagen llamada rails.png y como texto alternativo Rails-->
 <%= link_to image_tag("rails.png", alt:"Rails"),'http://rubyonrails.org/'%>
