@@ -1,13 +1,16 @@
 SampleApp::Application.routes.draw do
+  resources :usuarios
+
+
   #Esta regla sera necesaria actualmente.
   #get "usuario/nuevo"
-
+  resources :usuarios
 #Esta regla es para Redireccionar a la raiz, la aplicacion.
   root to: 'paginas_estaticas#inicio'
   # Modificamos las Reglas
   # get "paginas_estaticas/inicio" por match /help to "paginas_estaticas#inicio"
 
-  match '/nuevo', to: 'usuario#nuevo'
+  match '/ingreso', to: 'usuarios#new'
 
   match '/', to: 'paginas_estaticas#inicio'
 

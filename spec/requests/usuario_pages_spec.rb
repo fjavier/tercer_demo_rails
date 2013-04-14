@@ -1,11 +1,18 @@
 require 'spec_helper'
 
-describe "UsuarioPages" do
-  describe "GET /usuario_pages" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get usuario_pages_index_path
-      response.status.should be(200)
+describe "Pagina de Usuarios" do
+  subject {page}
+    describe "pagina de ingreso " do
+    	before {visit ingreso_path}
+    	it { should have_selector('h1',    text: 'Sign up') }
+    	it { should have_selector('title', text: 'Sign up') }
     end
-  end
+ describe "Perfil de Usuario" do
+ 	# Code to make a user variable
+  let(:usuario) { FactoryGirl.create(:usuario) }
+    before { visit usuario_path(usuario) }
+
+    it { should have_selector('h1',    text: usuario.name) }
+    it { should have_selector('title', text: usuario.name) }
+ end
 end
