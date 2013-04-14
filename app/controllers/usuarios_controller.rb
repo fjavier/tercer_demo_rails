@@ -45,6 +45,7 @@ class UsuariosController < ApplicationController
     #Codigo insertado
     @usuario = Usuario.new(params[:usuario])
     if @usuario.save
+      sign_in @usuario
       flash[:success] = "Bienvenido a Sample App!"
       redirect_to @usuario
     else
@@ -80,12 +81,15 @@ class UsuariosController < ApplicationController
   # DELETE /usuarios/1
   # DELETE /usuarios/1.json
   def destroy
-    @usuario = Usuario.find(params[:id])
-    @usuario.destroy
-
-    respond_to do |format|
-      format.html { redirect_to usuarios_url }
-      format.json { head :no_content }
-    end
+    sign_out
+    redirect_to root_url
+    #Ya se encontraba
+    #
+    #@usuario = Usuario.find(params[:id])
+    #@usuario.destroy
+  #respond_to do |format|
+   #   format.html { redirect_to usuarios_url }
+     # format.json { head :no_content }
+    #end
   end
 end

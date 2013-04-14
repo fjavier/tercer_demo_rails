@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe "Usuarios" do
-  describe "GET /usuarios" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get usuarios_path
-      response.status.should be(200)
+   before do
+    @usuario = Usuario.new(name: "Ejemplo", email: "user@example.com", 
+                     password: "foobar", password_confirmation: "foobar")
+    subject{@usuario}
     end
+    describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
   end
 end

@@ -5,11 +5,33 @@
 			<!-- Link_to es un ayudante que crea enlaces, por el momento estan sin URI-->
 			<!-- El tercer argumento es opcional.-->
 			<%= link_to "sample_app" , '#', id:"logo"%>
+			<%= link_to "Salir", signout_path, method: "delete" %>
+			<%= link_to "Profile", usuario_path(current_user)%>
+
 			<nav class="nav pull-right">
 			    <ul>
 			        <li><%= link_to "inicio", root_path %></li><!--
-			     --><li><%= link_to "ayuda", ayuda_path %></li><!--
-			     --><li><%= link_to "Ingreso", ingreso_path%></li>
+			     --><li><%= link_to "ayuda", ayuda_path %></li>
+
+			     	<% if signed_in? %>
+            		<li><%= link_to "Usuarios", '#' %></li>
+            		<li id="fat-menu" class="dropdown">
+              		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuenta<b class="caret"></b></a>
+              			<ul class="dropdown-menu">
+	                		<li><%= link_to "Perfil", current_user %></li>
+	                		<li><%= link_to "Configuracoin", '#' %></li>
+	                		<li class="divider"></li>
+	                		<li><%= link_to "Salir", signout_path, method: "delete" %></li>
+              			</ul>
+            		</li>
+          			<% else %>
+            		<li><%= link_to "Ingresar", signin_path %></li>
+          			<% end %>	
+<!-- <li><%= link_to "Registro", ingreso_path%></li> -->
+
+
+
+			     	
 			    </ul>
 			</nav>
 		</div>
