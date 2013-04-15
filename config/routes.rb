@@ -14,7 +14,7 @@ SampleApp::Application.routes.draw do
   # Modificamos las Reglas
   # get "paginas_estaticas/inicio" por match /help to "paginas_estaticas#inicio"
 
-  match '/ingreso', to: 'usuarios#new'
+  match '/registro', to: 'usuarios#new'
 
   match '/', to: 'paginas_estaticas#inicio'
 

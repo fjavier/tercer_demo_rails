@@ -1,25 +1,17 @@
-<h1>Listing usuarios</h1>
+<%= provide(:title, 'Todos los Usuarios') %>
+<h1>Lista de Usuarios</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= will_paginate %>
+<ul class="usuarios">
+  <% @usuarios.each do |usuario| %>
+  <li>
+    <%= gravatar_for usuario %>
+    <%= usuario.name %> 
+    <% if current_user.admin? && !current_user?(usuario) %>
+    <%= link_to "delete", usuario, method: :delete, data:{confirm: "Esta seguro?"} %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
 
-<% @usuarios.each do |usuario| %>
-  <tr>
-    <td><%= usuario.name %></td>
-    <td><%= usuario.email %></td>
-    <td><%= link_to 'Show', usuario %></td>
-    <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
-    <td><%= link_to 'Destroy', usuario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Usuario', new_usuario_path %>
+<%= will_paginate %>

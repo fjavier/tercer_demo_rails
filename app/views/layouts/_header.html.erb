@@ -10,12 +10,12 @@
 			        <li><%= link_to "inicio", root_path %></li><!--
 			     --><li><%= link_to "ayuda", ayuda_path %></li>
 						<% if signed_in? %>
-     	  	     		<li><%= link_to "Usuarios", '#' %></li>
+     	  	     		<li><%= link_to "Usuarios", usuarios_path %></li>
             			<li id="fat-menu" class="dropdown">
               			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuenta<b class="caret"></b></a>
               				<ul class="dropdown-menu">
 	                			<li><%= link_to "Perfil", current_user %></li>
-	                			<li><%= link_to "Configuracion", '#' %></li>
+	                			<li><%= link_to "Configuracion",edit_usuario_path(current_user) %></li>
 	                			<li class="divider"></li>
 	                			<li><%= link_to "Salir", signout_path, method: "delete" %></li>
               				</ul>
@@ -23,7 +23,7 @@
           			<% else %>
             		<li><%= link_to "Ingresar", signin_path %></li>
           			<% end %>	
-<!-- <li><%= link_to "Registro", ingreso_path%></li> -->
+<!-- <li><%= link_to "Registro", registro_path%></li> -->
 
 			    </ul>
 			</nav>
