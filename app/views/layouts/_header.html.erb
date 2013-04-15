@@ -7,8 +7,8 @@
 			<%= link_to "Demo Ruby" , root_path, id:"logo"%>
 			<nav>
 			    <ul class="nav nav-pills pull-right">
-			        <li><%= link_to "inicio", root_path %></li><!--
-			     --><li><%= link_to "ayuda", ayuda_path %></li>
+			    	<li><%= link_to "inicio", root_path %></li>
+			        <li><%= link_to "ayuda", ayuda_path %></li>
 						<% if signed_in? %>
      	  	     		<li><%= link_to "Usuarios", usuarios_path %></li>
             			<li id="fat-menu" class="dropdown">
@@ -22,9 +22,7 @@
             			</li>
           			<% else %>
             		<li><%= link_to "Ingresar", signin_path %></li>
-          			<% end %>	
-<!-- <li><%= link_to "Registro", registro_path%></li> -->
-
+          			<% end %>
 			    </ul>
 			</nav>
 		</div>

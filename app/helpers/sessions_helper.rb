@@ -1,24 +1,39 @@
 module SessionsHelper
-	def sign_in(usuario)
+
+def current_user=(usuario)
+    @current_user = usuario
+  end
+
+def current_user
+    @current_user||= Usuario.find_by_remember_token(cookies[:remember_token])
+  end
+  
+  #Mantiene al usuario Logueado
+  def sign_in(usuario)
     cookies.permanent[:remember_token] = usuario.remember_token
+    #Current User accesible en la vista y los controladores
     self.current_user = usuario
   end
 
-  def signed_in?
+def signed_in?
     !current_user.nil?
   end
 
-  def current_user=(usuario)
-  	@current_user = usuario
+  
+
+  def current_user?(usuario)
+    usuario == current_user
   end
 
-  def current_user?(user)
-    user == current_user
+  def signed_in_usuario
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Porfavor Registrate."
+      end
   end
 
-  def current_user
-  	@current_user||= Usuario.find_by_remember_token(cookies[:remember_token])
-  end
+  
+
   def sign_out
   	#Setea a nulo el Usuario Actual
   	self.current_user = nil

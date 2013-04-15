@@ -1,6 +1,21 @@
+# == Schema Information
+#
+# Table name: usuarios
+#
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
+#
+
 class Usuario < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
+  has_many :microposts, dependent: :destroy
   #Creamos la validacion para la base de Datos, email unico
   before_save {|usuario| usuario.email = email.downcase}
   before_save :create_remember_token

@@ -1,20 +1,22 @@
 SampleApp::Application.routes.draw do
-  resources :usuarios
-
-
+  #resources :usuarios
   #Esta regla sera necesaria actualmente.
   #get "usuario/nuevo"
   resources :usuarios
-
   resources :sessions, only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
+  
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 #Esta regla es para Redireccionar a la raiz, la aplicacion.
-  root to: 'paginas_estaticas#inicio'
+  root to: 'paginas_estaticas#home'
+  
   # Modificamos las Reglas
   # get "paginas_estaticas/inicio" por match /help to "paginas_estaticas#inicio"
 
   match '/registro', to: 'usuarios#new'
+
+  match '/', to: 'paginas_estaticas#home'
 
   match '/', to: 'paginas_estaticas#inicio'
 

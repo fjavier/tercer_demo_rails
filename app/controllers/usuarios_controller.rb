@@ -16,11 +16,7 @@ before_filter :admin_user, only: :destroy
   # GET /usuarios/1.json
   def show
     @usuario = Usuario.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @usuario }
-    end
+    @microposts = @usuario.microposts.paginate(page: params[:page])
   end
 
   # GET /usuarios/new
@@ -98,9 +94,6 @@ before_filter :admin_user, only: :destroy
   end
   #Manejador para Usuarios que aun no han ingresado 
   private
-  def signed_in_usuario
-      redirect_to signin_url, notice: "Porfavor Registrese." unless signed_in?
-    end
 
   def correct_usuario
       @usuario = Usuario.find(params[:id])
