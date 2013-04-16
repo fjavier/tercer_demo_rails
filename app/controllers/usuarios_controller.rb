@@ -1,7 +1,20 @@
 class UsuariosController < ApplicationController
-before_filter :signed_in_usuario, only: [:index,:edit, :update]
+before_filter :signed_in_usuario, only: [:index,:edit, :update,:following, :followers]
 before_filter :correct_usuario, only: [ :edit, :update]
 before_filter :admin_user, only: :destroy
+   def following
+    @title = "Siguiendo a"
+    @usuario = Usuario.find(params[:id])
+    @usuarios = @usuario.followed_usuarios.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Seguidores"
+    @usuario = Usuario.find(params[:id])
+    @usuarios = @usuario.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
   # GET /usuarios
   # GET /usuarios.json
   def index
@@ -99,8 +112,9 @@ before_filter :admin_user, only: :destroy
       @usuario = Usuario.find(params[:id])
       redirect_to(root_path) unless current_user?(@usuario)
     end
-end
 
 def admin_user
    redirect_to(root_path) unless current_user.admin?
+end
+
 end

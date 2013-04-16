@@ -1,6 +1,8 @@
 class PaginasEstaticasController < ApplicationController
   def home
-  	@micropost = current_user.microposts.build if signed_in?
+  	if signed_in?
+    @micropost = current_user.microposts.build
+  end
   end
 
   def inicio

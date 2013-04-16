@@ -1,0 +1,8 @@
+<% if @feed_items.any? ||  !@feed_items.nil? %>
+  <ol class="microposts">
+    <%= render partial: 'shared/feed_item', collection: @feed_items %>
+  </ol>
+  <%= will_paginate @feed_items %>
+<% else%>
+<h1>Este usuario no tiene entradas</h1>
+<% end %>

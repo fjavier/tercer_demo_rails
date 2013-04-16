@@ -5,11 +5,11 @@ end
 def create
 	usuario = Usuario.find_by_email(params[:session][:email].downcase)
 	if usuario && usuario.authenticate(params[:session][:password])
-		#Ingresar al usuario y Redireccionarlo a su Perfil
+	#Ingresar al usuario y Redireccionarlo a su Perfil
 		sign_in usuario
 		redirect_back_or usuario
 	else
-		#Crear un Mensaje de Error y Renderizar nuevamente la vista
+	#Crear un Mensaje de Error y Renderizar nuevamente la vista
 		flash.now[:error] = "Email o Contrasena no Valida"
 		render 'new'
 	end
