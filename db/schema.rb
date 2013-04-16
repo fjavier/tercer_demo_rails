@@ -22,17 +22,6 @@ ActiveRecord::Schema.define(:version => 20130415200310) do
 
   add_index "microposts", ["usuario_id", "created_at"], :name => "index_microposts_on_usuario_id_and_created_at"
 
-  create_table "relacions", :force => true do |t|
-    t.integer  "seguidor_id"
-    t.integer  "siguiendo_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "relacions", ["seguidor_id", "siguiendo_id"], :name => "index_relacions_on_seguidor_id_and_siguiendo_id", :unique => true
-  add_index "relacions", ["seguidor_id"], :name => "index_relacions_on_seguidor_id"
-  add_index "relacions", ["siguiendo_id"], :name => "index_relacions_on_siguiendo_id"
-
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -44,24 +33,14 @@ ActiveRecord::Schema.define(:version => 20130415200310) do
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "remember_token"
-  end
-
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
-
   create_table "usuarios", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.string   "password_digest"
-    t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.string   "remember_token"
   end
 
   add_index "usuarios", ["email"], :name => "index_usuarios_on_email", :unique => true
